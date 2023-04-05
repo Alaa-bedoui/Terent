@@ -1,4 +1,6 @@
 # Terent
+#read this 
+#just fork and pull 
 
 # Don't work on this repo alone . Any modifications you make, tell us about it in the theses group chat in slack
 
