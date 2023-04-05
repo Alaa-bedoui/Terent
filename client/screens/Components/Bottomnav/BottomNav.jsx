@@ -1,0 +1,88 @@
+import React, { useState } from "react";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
+
+const BottomNavigationBar = ({}) => {
+  const [activeTab, setActiveTab] = useState("");
+  const auth = getAuth();
+  const navigation = useNavigation();
+
+  const handleTabPress = (tabName) => {
+    setActiveTab(tabName);
+    navigation.navigate(tabName);
+  };
+
+  return (
+    <View style={styles.bottomNavigationBar}>
+      <TouchableOpacity
+        style={styles.tabButton}
+        onPress={() => handleTabPress("Home")}
+      >
+        <Ionicons
+          name={activeTab === "Home" ? "home" : "home-outline"}
+          size={30}
+          color={activeTab === "Home" ? "darkorange" : "lightgrey"}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.tabButton}
+        // onPress={() => handleTabPress("events")}
+      >
+        <Ionicons
+          name={activeTab === "calendar-outline" ? "search" : "calendar"}
+          size={30}
+          color={activeTab === "Search" ? "darkorange" : "lightgrey"}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.tabButton}
+        onPress={() => {
+          handleTabPress("logout");
+          signOut(auth)
+            .then(() => {})
+            .catch((error) => {
+              console.error(error);
+            });
+          navigation.navigate("playerlogin");
+        }}
+      >
+        <Ionicons
+          name={activeTab === "log-out-outline" ? "logout" : "log-out-sharp"}
+          size={30}
+          color={activeTab === "logout" ? "darkorange" : "lightgrey"}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.tabButton}
+        onPress={() => handleTabPress("profileplayer")}
+      >
+        <Ionicons
+          name={activeTab === "profileplayer" ? "person" : "person-outline"}
+          size={30}
+          color={activeTab === "profileplayer" ? "darkorange" : "lightgrey"}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  bottomNavigationBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: "black",
+    top: 20,
+    borderTopWidth: 1,
+    borderTopColor: "darkorange",
+  },
+  tabButton: {
+    flex: 1,
+    alignItems: "center",
+  },
+});
+
+export default BottomNavigationBar;

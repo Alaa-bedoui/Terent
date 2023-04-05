@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "TeRent",
+    "slug": "TeRent",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./client/assets/splash.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./client/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./client/assets/splash.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": ["ACCESS_FINE_LOCATION"],
+      "plugins": [
+        [
+          "expo-location",
+          {
+            "locationAlwaysAndWhenInUsePermission": "Allow $(TeRent) to use your location."
+          }
+        ]
+      ],
+      "package": "jdidi.test.newProject",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB3gw78dU8-sOg2nzSiHi4-7LUgEedSasM"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./client/assets/splash.png"
+    }
+  }
+}
+ 
